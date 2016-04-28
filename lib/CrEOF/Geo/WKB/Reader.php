@@ -99,8 +99,19 @@ class Reader
     /**
      * @return float
      * @throws UnexpectedValueException
+     *
+     * @deprecated use readFloat()
      */
     public function readDouble()
+    {
+        return $this->readFloat();
+    }
+
+    /**
+     * @return float
+     * @throws UnexpectedValueException
+     */
+    public function readFloat()
     {
         $double = $this->unpackInput('d');
 
@@ -118,13 +129,26 @@ class Reader
      *
      * @return float[]
      * @throws UnexpectedValueException
+     *
+     * @deprecated use readFloats()
      */
     public function readDoubles($count)
+    {
+        return $this->readFloats($count);
+    }
+
+    /**
+     * @param int $count
+     *
+     * @return float[]
+     * @throws UnexpectedValueException
+     */
+    public function readFloats($count)
     {
         $doubles = array();
 
         for ($i = 0; $i < $count; $i++) {
-            $doubles[] = $this->readDouble();
+            $doubles[] = $this->readFloat();
         }
 
         return $doubles;
